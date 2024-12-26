@@ -13,11 +13,26 @@ import emaillist.vo.EmaillistVo;
 public class EmaillistController {
 	private EmaillistRepository emaillistRepository;
 	
+	public EmaillistController(EmaillistRepository emaillistRepository) {
+		this.emaillistRepository = emaillistRepository;
+	}
+	
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<EmaillistVo> list = emaillistRepository.findAll();
 		model.addAttribute("list", list);
 		return "index";
+	}
+	
+	@RequestMapping("/form")
+	public String form(Model model) {
+		return "form";
+	}
+	
+	@RequestMapping("/add")
+	public String add(EmaillistVo vo) {
+		emaillistRepository.insert(vo);
+		return "redirect:/";
 	}
 	
 	
