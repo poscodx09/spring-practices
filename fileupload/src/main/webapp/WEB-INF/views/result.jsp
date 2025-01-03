@@ -13,12 +13,12 @@
 	<h1>Upload completed</h1>
 
 	<div class="result-images">
-		<img src="${pageContext.request.contextPath }/${url1 }"
-			style="width: 150px"><br>
+		<img src="${pageContext.request.contextPath }/${url }"
+			style="width: 150px">
 	</div>
 
 	<p>
-		<a href='/fileupload/form'> 다시 업로드 하기 </a>
+		<a href='${pageContext.request.contextPath }'> 다시 업로드 하기 </a>
 	</p>
 
 </body>
