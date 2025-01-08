@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import guestbook.repository.GuestbookRepository;
+import guestbook.service.GuestbookService;
 import guestbook.vo.GuestbookVo;
 
 @Controller
 public class GuestbookController {
 	
 	
-	private GuestbookRepository guestbookRepository;
+	private GuestbookService guestbookService;
 	
-	public GuestbookController(GuestbookRepository guestbookRepository) {
-		this.guestbookRepository = guestbookRepository;
+	public GuestbookController(GuestbookService guestbookService) {
+		this.guestbookService = guestbookService;
 	}
 	
 	@RequestMapping("/")
@@ -40,7 +41,7 @@ public class GuestbookController {
 //		GuestbookController controller = ac2.getBean(GuestbookController.class);
 //		System.out.println(controller);
 //		
-		List<GuestbookVo> list = guestbookRepository.findAll();
+		List<GuestbookVo> list = guestbookService.getContentsList();
 		model.addAttribute("list", list);
 		return "index";
 	}
@@ -48,7 +49,7 @@ public class GuestbookController {
 	
 	@RequestMapping("/add")
 	public String add(GuestbookVo vo) {
-		guestbookRepository.insert(vo);
+		guestbookService.addContents(vo);
 		return "redirect:/";
 	}
 	
@@ -60,13 +61,8 @@ public class GuestbookController {
 	
 	@RequestMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id, @RequestParam("password") String password, Model model) {
-		int count = guestbookRepository.deleteByIdAndPassword(id, password);
-        if (count > 0) {
-            return "redirect:/"; // 삭제 후 메인 페이지로 이동
-        } else {
-        	model.addAttribute("message", "비밀번호가 틀렸습니다.");
-            return "deleteform"; // 실패 시 폼으로 다시 이동
-        }
+		guestbookService.deleteContents(id, password);
+        return "redirect:/"; // 삭제 후 메인 페이지로 이동
 	}
 	
 
