@@ -33,7 +33,7 @@
 	<c:forEach items="${list }" var="vo">
 	<table width=510 border=1>
 		<tr>
-			<td>${vo.id }</td>
+			<td>[${vo.id }]</td>
 			<td>${vo.name }</td>
 			<td>${vo.regDate }</td>
 			<td><a href="${pageContext.request.contextPath }/deleteform/${vo.id }">삭제</a></td>
