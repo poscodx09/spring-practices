@@ -1,0 +1,13 @@
+package soundsystem;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class HighSchoolRapper2Final implements CompactDisc {
+	private final static String artist = "김하온";
+	private final static String title = "붕붕";
+
+	public String play() {
+		return "Playing " + title + " by " + artist;
+	}
+}

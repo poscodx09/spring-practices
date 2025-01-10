@@ -18,7 +18,8 @@
        |--- CDPlayerXmlConfigTest.java
        |--- CDPlayerJavaConfigTest.java
        
-====================================================
+====================================================================
+
 2. videosystem: Explicit configuration(Bean configuration)
 
 [src/main/java]
