@@ -6,6 +6,16 @@
 </head>
 <body>
 	<h4>Conditional01: th:if ~ th:unless</h4>
+	<table>
+		<tr th:each="user:${users}">
+			<td>[[${user.no}]]</td>
+			<td>[[${user.name}]]</td>
+			<td th:if="${user == 'male'}">남</td>
+			<td th:unless="${user == 'male'}">여</td>
+			<td>남</td>
+			<td>여</td>
+		</tr>
+	</table>
 	
 	<div style="padding-top: 20px">
 		<a th:href="@{/ex01}">return to index</a>
